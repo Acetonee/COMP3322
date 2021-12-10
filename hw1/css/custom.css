@@ -1,0 +1,229 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+:root {
+    position: relative;
+    color: #eee;
+    background: var(--background-color) radial-gradient(at top right, var(--background-color), #28292a 20%, var(--background-color) 20%, #28292a 40%, var(--background-color) 40%, #28292a 60%, var(--background-color) 60%, #28292a 80%, var(--background-color) 80%, #28292a);
+    text-rendering: optimizeLegibility;
+    font-family: "Times New Roman", serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    padding: 0 2%;
+    --background-color: #1e1f20;
+    --dark-background-color: #161718;
+    --light-background-color: #212223;
+    --title-color: #bbf;
+}
+
+body {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1200px;
+}
+
+header {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+}
+
+#title-wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+#header-lower {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+#rainbow {
+    position: relative;
+    padding: .2em;
+    margin: 0;
+    overflow: hidden;
+    transform: skew(-5deg) rotate(-5deg) translateY(-10%);
+    animation: floaty 3s alternate infinite ease-in-out, h1-animation 2s ease;
+}
+
+h1 {
+    position: relative;
+    font-size: calc(1.5em + 2.5vw);
+    line-height: 1.25;
+    padding: .5em;
+    margin: 0;
+    color: #ffffff;
+    background: var(--dark-background-color);
+    transition: transform 1s;
+    /*animation: h1-animation 2s ease;*/
+}
+
+@keyframes floaty {
+    0% {
+        transform: skew(-5deg) rotate(-5deg) translateY(-5%);
+    }
+    100% {
+        transform: skew(-5deg) rotate(-5deg) translateY(-10%);
+    }
+}
+
+/*h1:hover {*/
+/*    !*box-shadow: 0 0 0 2px var(--title-color);*!*/
+/*    transition: unset;*/
+/*}*/
+
+h1::before {
+    content: "";
+    position: absolute;
+    top: -.5em;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(115deg,#5fdf80,#ffe658,#b777f5,#22ccff,#54de8b);
+    background-size: 50% 100%;
+    background-position-y: 25%;
+    /*mix-blend-mode: multiply;*/
+    animation: rainbow 1s linear infinite;
+    transition: unset;
+    z-index: -1;
+}
+
+@keyframes rainbow {
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+h1:hover::before {
+    mix-blend-mode: multiply;
+}
+
+/*h1::after {*/
+/*    content: "";*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    box-shadow: inset 0 0 0 2px var(--title-color);*/
+/*    animation: h1-animation 2s ease;*/
+/*}*/
+
+@keyframes h1-animation {
+    0% {
+        clip-path: circle(0);
+    }
+    100% {
+        clip-path: circle(75%);
+    }
+}
+
+h2 {
+    font-size: calc(1.2em + 1.5vw);
+    line-height: 1.25;
+    text-align: center;
+    margin: 5rem 0 2rem 0;
+}
+
+h3 {
+    font-size: calc(1em + 1vw);
+    line-height: 1.25;
+    margin: 5rem 0 2rem 0;
+}
+
+h4 {
+    font-size: calc(1em + .5vw);
+    line-height: 1.25;
+    margin: 3rem 0 2rem 0;
+}
+
+header h4 {
+    margin: 0;
+}
+
+nav {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    font-weight: 600;
+    text-align: center;
+    background: var(--background-color) linear-gradient(420.69deg, var(--light-background-color), var(--background-color));
+    z-index: 100;
+}
+
+a {
+    display: inline-block;
+    color: #eeeeee;
+    padding: .5em;
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--title-color);
+    background: var(--dark-background-color);
+}
+
+nav li::marker {
+    content: none;
+}
+
+img {
+    display: block;
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin: 2em auto;
+    filter: invert(1);
+}
+
+code {
+    display: inline-block;
+    font-family: monospace;
+    font-size: .8em;
+    line-height: 1.25;
+    padding: 2em;
+    border-radius: 1em;
+    background: var(--dark-background-color);
+}
+
+section h3, section h4 {
+    color: #ccccff;
+}
+
+#overview img {
+    filter: invert(1) hue-rotate(150deg);
+}
+
+table {
+    background: var(--dark-background-color);
+    border-collapse: collapse;
+}
+
+td {
+    border: 3px solid #555555;
+}
+
+td[rowspan] {
+    text-align: center;
+}
+
+@media (max-width: 850px) {
+    nav {
+        font-size: .8em;
+    }
+}
+
+@media (max-width: 650px) {
+    a {
+        padding: .2em;
+    }
+}
